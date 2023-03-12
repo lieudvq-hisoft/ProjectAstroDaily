@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "default": "astrodaily-af227"
+  },
+  "targets": {
+    "astrodaily-af227": {
+      "hosting": {
+        "astrodailyapi": [
+          "AstroDailyProject/bin/Release/net5.0/publish",
+          "publish"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
