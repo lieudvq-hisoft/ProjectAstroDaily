@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\FPT\\OutSource\\Authentication Firebase JWT\\ProjectAstroDaily\\AstroDailyProject\\AstroDailyProject.csproj": {}
+    "C:\\Users\\daman\\Source\\Repos\\ProjectAstroDailyy\\AstroDailyProject\\AstroDailyProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\FPT\\OutSource\\Authentication Firebase JWT\\ProjectAstroDaily\\AstroDailyProject\\AstroDailyProject.csproj": {
+    "C:\\Users\\daman\\Source\\Repos\\ProjectAstroDailyy\\AstroDailyProject\\AstroDailyProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\FPT\\OutSource\\Authentication Firebase JWT\\ProjectAstroDaily\\AstroDailyProject\\AstroDailyProject.csproj",
+        "projectUniqueName": "C:\\Users\\daman\\Source\\Repos\\ProjectAstroDailyy\\AstroDailyProject\\AstroDailyProject.csproj",
         "projectName": "AstroDailyProject",
-        "projectPath": "C:\\Users\\FPT\\OutSource\\Authentication Firebase JWT\\ProjectAstroDaily\\AstroDailyProject\\AstroDailyProject.csproj",
-        "packagesPath": "C:\\Users\\SE140364\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\FPT\\OutSource\\Authentication Firebase JWT\\ProjectAstroDaily\\AstroDailyProject\\obj\\",
+        "projectPath": "C:\\Users\\daman\\Source\\Repos\\ProjectAstroDailyy\\AstroDailyProject\\AstroDailyProject.csproj",
+        "packagesPath": "C:\\Users\\daman\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\daman\\Source\\Repos\\ProjectAstroDailyy\\AstroDailyProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\SE140364\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\daman\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -88,6 +88,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.17, 5.0.17]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -96,7 +102,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

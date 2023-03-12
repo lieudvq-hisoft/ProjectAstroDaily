@@ -23,13 +23,20 @@ namespace AstroDailyProject.BE_Bang.Controller
         [HttpGet("random")]
         public IActionResult GetQuoteRandom()
         {
-            var randomRecord = _context.Quotes.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
-            var quote = _context.Quotes.SingleOrDefault(lo => lo.Id == randomRecord.Id);
-            if (quote == null)
+            try
             {
-                return NotFound();
+                var randomRecord = _context.Quotes.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
+                var quote = _context.Quotes.SingleOrDefault(lo => lo.Id == randomRecord.Id);
+                if (quote == null)
+                {
+                    return NotFound();
+                }
+                return Ok(quote);
             }
-            return Ok(quote);
+            catch
+            {
+                return BadRequest();
+            }
         }
 
         [HttpPost("create")]
@@ -51,17 +58,24 @@ namespace AstroDailyProject.BE_Bang.Controller
         [HttpPut("{id}")]
         public IActionResult EditQuote(int id, QuoteModel quoteModel)
         {
-            var quote = _context.Quotes.SingleOrDefault(lo => lo.Id == id);
-            if (id != quote.Id) { return BadRequest(); }
-            if (quote != null)
+            try
             {
-                quote.Script = quoteModel.Script == null ? quote.Script : quoteModel.Script;
-                _context.SaveChanges();
-                return NoContent();
+                var quote = _context.Quotes.SingleOrDefault(lo => lo.Id == id);
+                if (id != quote.Id) { return BadRequest(); }
+                if (quote != null)
+                {
+                    quote.Script = quoteModel.Script == null ? quote.Script : quoteModel.Script;
+                    _context.SaveChanges();
+                    return NoContent();
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
-            else
+            catch
             {
-                return NotFound();
+                return BadRequest();
             }
 
 
@@ -70,17 +84,24 @@ namespace AstroDailyProject.BE_Bang.Controller
         [HttpDelete("{id}")]
         public IActionResult DeleteQuote(int id)
         {
-            var quote = _context.Quotes.SingleOrDefault(lo => lo.Id == id);
-            if (quote != null)
+            try
             {
+                var quote = _context.Quotes.SingleOrDefault(lo => lo.Id == id);
+                if (quote != null)
+                {
 
-                _context.Remove(quote);
+                    _context.Remove(quote);
 
-                return NoContent();
+                    return NoContent();
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
-            else
+            catch
             {
-                return NotFound();
+                return BadRequest();
             }
 
 

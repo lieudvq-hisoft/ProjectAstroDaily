@@ -44,54 +44,82 @@ namespace AstroDailyProject.BE_Bang.Controller
         [HttpGet("{name}")]
         public IActionResult GetPlanetById(string name)
         {
-            var planets = _context.Planets.Where(p => p.Name.Contains(name) && p.Status == 1).ToList();
-            if (planets.Count == 0)
+            try
             {
-                return NotFound();
+                var planets = _context.Planets.Where(p => p.Name.Contains(name) && p.Status == 1).ToList();
+                if (planets.Count == 0)
+                {
+                    return NotFound();
+                }
+                return Ok(planets);
             }
-            return Ok(planets);
+            catch
+            {
+                return BadRequest();
+            }
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            var planets = _context.Planets.Where(p => p.Status == 1).ToList();
-            return Ok(planets);
+            try
+            {
+                var planets = _context.Planets.Where(p => p.Status == 1).ToList();
+                return Ok(planets);
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
 
         [HttpPut("{name}/delete")]
         public IActionResult DeletePlanet(string name)
         {
-            var planet = _context.Planets.SingleOrDefault(lo => lo.Name == name);
-            if (name != planet.Name.ToString()) { return BadRequest(); }
-            if (planet != null)
+            try
             {
-                planet.Status = 0;
-                _context.SaveChanges();
-                return NoContent();
+                var planet = _context.Planets.SingleOrDefault(lo => lo.Name == name);
+                if (name != planet.Name.ToString()) { return BadRequest(); }
+                if (planet != null)
+                {
+                    planet.Status = 0;
+                    _context.SaveChanges();
+                    return NoContent();
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
-            else
+            catch
             {
-                return NotFound();
+                return BadRequest();
             }
         }
 
         [HttpPut("{name}/update")]
         public IActionResult UpdatePlanet(string name,PlanetModel planetModel)
         {
-            var planet = _context.Planets.SingleOrDefault(lo => lo.Name == name && lo.Status==1);
-            if (name != planet.Name.ToString()) { return BadRequest(); }
-            if (planet != null)
+            try
             {
-                planet.Name = planetModel.Name == null ? planet.Name : planetModel.Name;
-                planet.Description = planetModel.Description == null ? planet.Description : planetModel.Description;
-                planet.Status = 1;
-                _context.SaveChanges();
-                return NoContent();
+                var planet = _context.Planets.SingleOrDefault(lo => lo.Name == name && lo.Status == 1);
+                if (name != planet.Name.ToString()) { return BadRequest(); }
+                if (planet != null)
+                {
+                    planet.Name = planetModel.Name == null ? planet.Name : planetModel.Name;
+                    planet.Description = planetModel.Description == null ? planet.Description : planetModel.Description;
+                    planet.Status = 1;
+                    _context.SaveChanges();
+                    return NoContent();
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
-            else
+            catch
             {
-                return NotFound();
+                return BadRequest();
             }
         }
 

@@ -45,8 +45,15 @@ namespace AstroDailyProject.BE_Bang.Controller
         [HttpGet]
         public IActionResult GetAll()
         {
-            var explain = _context.Explanations.ToList();
-            return Ok(explain);
+            try
+            {
+                var explain = _context.Explanations.ToList();
+                return Ok(explain);
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
 
     }
